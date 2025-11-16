@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+      [중요] 모바일 반응형 웹을 위한 뷰포트 설정
+      - 이 코드가 없으면 모바일에서 PC 화면처럼 축소되어 보입니다.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유아 한글 무료체험</title>
+    <!-- 
+      [필수] Tailwind CSS CDN
+      - 디자인을 위한 스타일시트입니다.
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 
+      [필수] Inter 폰트 (고급스러운 디자인을 위함)
+      - Tailwind CSS의 기본 폰트입니다.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* [필수] Noto Sans KR 폰트 적용
+          - 한국어 폰트가 깨지지 않고 Inter 폰트와 잘 어울리도록 설정합니다.
+        */
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            overscroll-behavior: none; /* 모바일에서 당겼을 때 새로고침 방지 */
+            word-break: keep-all; /* 단어 단위로 줄바꿈 (가독성 향상) */
+        }
+        /* [디자인] 헤드라인 그라데이션 텍스트
+          - 가장 중요한 헤드라인을 강조합니다.
+        */
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #6D28D9 0%, #DB2777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center">
+
+    <!-- 
+      랜딩페이지 전체 컨테이너
+      - 모바일 화면(최대 640px)에 최적화된 너비입니다.
+      - 데스크톱에서는 이 컨테이너가 중앙에 보입니다.
+    -->
+    <div class="w-full max-w-2xl bg-white shadow-2xl overflow-hidden">
+
+        <!-- 
+          [섹션 1. HERO] — 최상단 후킹(혜택 중심)
+          - 그라데이션 배경으로 시선을 즉각 사로잡습니다.
+          - 혜택 리스트를 깔끔한 카드로 변경하여 신뢰도를 높였습니다.
+        -->
+        <section class="w-full text-center px-6 pt-20 pb-12" style="background: linear-gradient(180deg, #F3E8FF 0%, #FFFFFF 100%);">
+            <!-- 
+              메인 헤드라인
+              - '무료', '상품권', '100%'를 강력하게 강조
+            -->
+            <h1 class="text-4xl md:text-5xl font-black mb-8 leading-tight hero-gradient-text">
+                “무료체험만 해도<br>
+                신세계상품권 1만원<br>
+                100% 드립니다.”
+            </h1>
+
+            <div class="max-w-md mx-auto mb-6">
+                <p class="inline-block px-5 py-2.5 text-base font-semibold text-white bg-red-500 rounded-full shadow">
+                    정원 제한으로 예고 없이 종료될 수 있습니다.
+                </p>
+            </div>
+            
+            <!-- 
+              추천 이미지 (랜덤 이미지)
+              - [중요] 실제 이미지로 교체하셔야 합니다.
+              - placehold.co: 안정적인 이미지 로딩을 위한 임시 플레이스홀더
+            -->
+            <div class="w-full max-w-md mx-auto rounded-lg shadow-lg overflow-hidden mb-8 aspect-video bg-white">
+                <img src="section1.webp" alt="[학습 교재와 상품권 이미지]" class="w-full h-full object-contain">
+            </div>
+
+
+            <!-- 
+              부가 혜택 리스트 (카드 디자인)
+              - 3D 아이콘과 backdrop-blur 효과로 전문성 강조
+            -->
+            <div class="max-w-md mx-auto text-left space-y-3 mb-4">
+                <!-- 카드 1: 교재 -->
+                <div class="flex items-center p-3 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm space-x-3 border border-gray-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/book-stack.png" alt="교재" class="w-10 h-10 flex-shrink-0">
+                    <p class="text-lg text-gray-800">
+                        <span class="font-bold text-blue-600">유아 누리 한글 교재 2종 무료 제공</span><br>
+                        <span class="text-sm text-gray-600">(연령 단계에 따라 1권씩)</span>
+                    </p>
+                </div>
+                <!-- 카드 2: N페이 -->
+                <div class="flex items-center p-3 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm space-x-3 border border-gray-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/money-bag.png" alt="N페이" class="w-10 h-10 flex-shrink-0">
+                    <p class="text-lg text-gray-800">
+                        <span class="font-bold text-green-600">N페이 4만원</span><br>
+                        <span class="text-sm text-gray-600">(40명 추첨)</span>
+                    </p>
+                </div>
+                <!-- 카드 3: 커피 -->
+                 <div class="flex items-center p-3 bg-white/70 backdrop-blur-sm rounded-lg shadow-sm space-x-3 border border-gray-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/coffee-to-go.png" alt="커피" class="w-10 h-10 flex-shrink-0">
+                    <p class="text-lg text-gray-800">
+                        <span class="font-bold">메가커피</span><br>
+                        <span class="text-sm text-gray-600">(400명 추첨)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- [추가] 혜택 조건 명시 -->
+            <p class="text-sm text-gray-600 mb-8 text-left max-w-md mx-auto">* 3일 체험시 지급 (N페이, 커피쿠폰)</p>
+
+            <!-- 
+              CTA (Call to Action) 버튼
+              - 가장 중요한 행동 유도 버튼
+              - 크고, 눈에 띄는 색상(노란색) 사용
+            -->
+            <button type="button" class="w-full max-w-md h-16 bg-yellow-400 text-gray-900 text-xl font-bold rounded-lg shadow-lg hover:bg-yellow-500 transition-all focus:outline-none focus:ring-4 focus:ring-yellow-300" onclick="document.getElementById('tenping-form')?.scrollIntoView({ behavior: 'smooth' });">
+                지금 무료체험 + 상품권 받기
+            </button>
+        </section>
+
+        <!-- 
+          [섹션 2. 부담 제거] (리스크 제로 메시지)
+          - 부드러운 회색 배경으로 심리적 부담감 감소
+        -->
+        <section class="w-full text-center px-6 py-16 bg-gray-50">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-snug">
+                “지금은 ‘결정’이 아니라<br>
+                우리 아이에게 맞는지<br>
+                ‘확인’만 하는 단계입니다.”
+            </h2>
+            
+            <!-- 추천 이미지 -->
+            <div class="w-full max-w-md mx-auto rounded-lg shadow-lg overflow-hidden mb-8 aspect-[4/3] bg-gray-200">
+                <img src="section2.webp" alt="[부담 없이 신청하는 이미지]" class="w-full h-full object-cover">
+            </div>
+
+
+            <!-- 리스크 제거 리스트 (문맥에 맞는 3D 아이콘 사용) -->
+            <div class="max-w-md mx-auto space-y-4">
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4">
+                    <img src="3dicons-thumb-up-dynamic-color.png" alt="중단 가능" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-lg text-gray-700 text-left">무료체험은 <span class="font-bold">언제든 중단 가능</span></p>
+                </div>
+                 <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4">
+                    <img src="3dicons-dollar-dynamic-color.png" alt="증정" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-lg text-gray-700 text-left">체험만 해도 <span class="font-bold">교재+상품권 모두 증정</span></p>
+                </div>
+                 <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4">
+                    <img src="3dicons-clock-dynamic-color.png" alt="10분" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-lg text-gray-700 text-left">부모님 시간 <span class="font-bold">10분이면 신청 완료</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          [섹션 3. 왜 필요한가?] (오해 깨부수기)
+          - 깔끔한 '카드' 디자인으로 '문제점(No)'과 '해결책'을 명확히 대비
+        -->
+        <section class="w-full text-center px-6 py-16 bg-blue-50">
+            <h2 class="text-3xl md:text-4xl font-black text-blue-900 mb-6 leading-snug">
+                “한글·숫자보다 중요한 건<br>
+                ‘공부 습관’입니다.”
+            </h2>
+
+            <!-- 추천 이미지 -->
+            <div class="w-full max-w-md mx-auto rounded-lg shadow-lg overflow-hidden mb-8 aspect-video bg-gray-200">
+                <img src="section3.webp" alt="[공부에 몰입하는 아이 이미지]" class="w-full h-full object-cover">
+            </div>
+
+            
+            <!-- 
+              [디자인 수정] '문제점 -> 해결책' 카드형 UI
+              - 'No'와 'Solution'이 명확히 대비됨
+            -->
+            <div class="max-w-md mx-auto space-y-4">
+                <!-- 항목 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gray-100">
+                        <span class="text-sm font-semibold text-red-600 bg-red-100 px-3 py-1 rounded-full">No</span>
+                        <p class="text-xl text-gray-600 line-through mt-2">단과식 학습</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-2xl font-bold text-blue-700">놀이 기반 주제 통합</p>
+                    </div>
+                </div>
+                <!-- 항목 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gray-100">
+                        <span class="text-sm font-semibold text-red-600 bg-red-100 px-3 py-1 rounded-full">No</span>
+                        <p class="text-xl text-gray-600 line-through mt-2">연령 통합</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-2xl font-bold text-blue-700">발달 맞춤형 콘텐츠</p>
+                    </div>
+                </div>
+                <!-- 항목 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-4 bg-gray-100">
+                        <span class="text-sm font-semibold text-red-600 bg-red-100 px-3 py-1 rounded-full">No</span>
+                        <p class="text-xl text-gray-600 line-through mt-2">주입식</p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-2xl font-bold text-blue-700">23,000개 놀이형 학습</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          [섹션 4. 아이가 실제로 변하는 이유] (확증)
+          - '원인 -> 결과'가 명확히 보이는 흐름(Flow) 디자인 적용
+        -->
+        <section class="w-full text-center px-6 py-16 bg-white">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-snug">
+                “부모님이 가장 먼저 느끼는 변화는<br>
+                아이 ‘집중시간이 길어진다’는 점입니다.”
+            </h2>
+
+            <!-- 추천 이미지 -->
+
+            <div class="w-full max-w-md mx-auto rounded-lg shadow-lg overflow-hidden mb-8 aspect-[9/16] bg-gray-200">
+                <video src="review.mp4" controls playsinline class="w-full h-full object-cover" poster="section4.webp"></video>
+            </div>
+
+
+            <!-- 
+              [디자인 수정] '원인 -> 결과' 흐름(Flow) UI
+              - 3D 화살표 아이콘으로 논리적 흐름을 직관적으로 표현
+            -->
+            <div class="max-w-md mx-auto space-y-4 mb-6">
+                <!-- 항목 1 -->
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700">놀이처럼 시작</span>
+                    <img src="3dicons-play-front-color.png" alt="화살표" class="w-8 h-8 flex-shrink-0 mx-2">
+                    <span class="text-xl font-bold text-indigo-700">자연스럽게 반복</span>
+                </div>
+                <!-- 항목 2 -->
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg shadow-sm">
+                    <span class="text-lg font-semibold text-gray-700">재미 기반</span>
+                    <img src="3dicons-play-front-color.png" alt="화살표" class="w-8 h-8 flex-shrink-0 mx-2">
+                    <span class="text-xl font-bold text-indigo-700">아이가 먼저 학습을 찾음</span>
+                </div>
+            </div>
+
+            <!-- 최종 결과 (Punchline) -->
+            <div class="max-w-md mx-auto p-4 bg-yellow-100 rounded-lg shadow-sm">
+                <p class="text-xl font-bold text-yellow-900">3일만 해도 반응이 다릅니다</p>
+            </div>
+        </section>
+
+        <!-- 
+          [섹션 5. 신뢰 증명] (사회적 증거)
+          - 굵은 폰트와 어두운 배경으로 신뢰감과 무게감 전달
+        -->
+        <section class="w-full text-center px-0 pt-0 pb-8 bg-white">
+
+            <div class="w-full overflow-hidden">
+                <img src="section5.webp" alt="[신뢰 증명 섹션 이미지]" class="w-full h-full object-cover">
+            </div>
+
+
+        </section>
+
+
+
+
+
+        <!-- 
+          [섹션 6. 혜택 재정리] (전환 강화)
+          - 최종 결정을 앞두고 혜택을 다시 한번 각인
+          - 섹션 1의 3D 아이콘과 통일감 유지
+        -->
+        <section class="w-full text-center px-6 py-16 bg-yellow-50">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 leading-snug">
+                무료체험 신청 시
+            </h2>
+            
+            <!-- 혜택 아이콘 리스트 -->
+            <div class="max-w-md mx-auto space-y-4 mb-8">
+                <!-- 1. 교재 -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4 border border-yellow-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/book-stack.png" alt="교재" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-xl font-bold text-gray-700 text-left">무료 교재 2종</p>
+                </div>
+                <!-- 2. 상품권 -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4 border border-yellow-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/gift-card.png" alt="상품권" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-xl font-bold text-gray-700 text-left">신세계상품권 1만원 (100%)</p>
+                </div>
+                <!-- 3. N페이/커피 -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-sm space-x-4 border border-yellow-200">
+                    <img src="https://img.icons8.com/3d-fluency/48/money-bag.png" alt="N페이" class="w-12 h-12 flex-shrink-0">
+                    <p class="text-xl font-bold text-gray-700 text-left">N페이 4만원 + 커피 (3일 체험 시 / 추첨)</p>
+                </div>
+            </div>
+
+            <!-- 클로징 멘트 -->
+            <p class="text-2xl font-black text-red-600">
+                부모님이 손해 볼 게<br>
+                단 하나도 없습니다.
+            </p>
+        </section>
+
+        <!-- 
+          [섹션 7. 최종 CTA] (전환)
+          - 다른 요소 없이 헤드라인과 버튼에만 집중시켜 전환율 극대화
+        -->
+        <section class="w-full text-center px-6 py-16 bg-white">
+            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-10 leading-snug">
+                “아이가 바뀌는지,<br>
+                3일만 직접 확인해보세요.”
+            </h2>
+            
+            <!-- 최종 CTA 버튼 -->
+            <button class="w-full max-w-md h-16 bg-yellow-400 text-gray-900 text-xl font-bold rounded-lg shadow-lg hover:bg-yellow-500 transition-all focus:outline-none focus:ring-4 focus:ring-yellow-300">
+                무료체험 + 상품권 받기
+            </button>
+        </section>
+
+        <div id="tenping-form" class="w-full">
+            <tenping class="adsbytenping" style="width:100%; margin:0 auto; display:block;" tenping-ad-type="CInmlFSNPJoo9rBMK%2brlTg%3d%3d" tenping-ad-client="YB5zJhYSsND30S8%2b6AfDDBt6Knx30LS8lfu4SlQnfo8BP3A58iAErJKpG5xjk3jk" tenping-ad-campaign="2024012915390001" tenping-ad-distributionAddID="2025111615080001" tenping-ad-contain_image="false" tenping-ad-contain_logo="false" tenping-ad-contain_Plugin="false" tenping-ad-contain_TpCall="false" tenping-ad-theme="default_button"></tenping>
+            <script async src="//ads.tenping.kr/scripts/adsbytenping.min.js"></script>
+        </div>
+
+    </div> <!-- .max-w-2xl (전체 컨테이너) 끝 -->
+
+</body>
+</html>
+
