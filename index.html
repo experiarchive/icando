@@ -318,7 +318,229 @@
             </h2>
         </section>
 
-        <iframe frameborder='0' width='100%' height='480' name='ifrm_dbdbdeep' scrolling='no' src='//dbdbdeep.com/new/mct/list/?S00277743GC05919580D' ></iframe>
+        <section class="w-full px-6 pb-12 bg-white">
+            <div id="realtime-widget" class="rt-board" aria-live="polite">
+                <div class="rt-card">
+                    <div class="rt-card__title">
+                        <span class="rt-title-text">실시간 상담신청 현황</span>
+                        <span class="rt-updated-label">업데이트</span>
+                        <span class="rt-updated-time" id="rt-updated">--:--:--</span>
+                    </div>
+                    <div class="rt-table">
+                        <div class="rt-row rt-row--head">
+                            <span>성함</span>
+                            <span>전화번호</span>
+                            <span>신청현황</span>
+                        </div>
+                        <div class="rt-rows-viewport">
+                            <div class="rt-rows" id="rt-rows"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <style>
+            #realtime-widget {
+                width: 100%;
+                max-width: 640px;
+                margin: 0 auto 32px;
+            }
+            #realtime-widget .rt-card {
+                border-radius: 20px;
+                border: 1px solid #dbe2ef;
+                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+                background: #ffffff;
+                overflow: hidden;
+            }
+            #realtime-widget .rt-card__title {
+                background: #0b0b0f;
+                color: #ffffff;
+                padding: 18px 24px;
+                font-size: 1.1rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            #realtime-widget .rt-updated-label {
+                font-size: 0.85rem;
+                opacity: 0.8;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 999px;
+                padding: 2px 10px;
+            }
+            #realtime-widget .rt-updated-time {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #fef3c7;
+            }
+            #realtime-widget .rt-table {
+                background: #ffffff;
+            }
+            #realtime-widget .rt-row {
+                display: grid;
+                grid-template-columns: 1fr 1.4fr 0.9fr;
+                align-items: center;
+                padding: 14px 22px;
+                font-size: 0.97rem;
+                color: #0f172a;
+                border-bottom: 1px solid #eef1f7;
+            }
+            #realtime-widget .rt-row:last-child {
+                border-bottom: none;
+            }
+            #realtime-widget .rt-row--head {
+                font-weight: 700;
+                text-align: left;
+                background: #f8fafc;
+                color: #111827;
+                border-bottom: 2px solid #0b0b0f;
+                position: relative;
+                z-index: 2;
+            }
+            #realtime-widget .rt-row--head span {
+                font-size: 0.92rem;
+            }
+            #realtime-widget .rt-rows-viewport {
+                max-height: 360px;
+                overflow: hidden;
+                position: relative;
+            }
+            #realtime-widget .rt-rows {
+                display: flex;
+                flex-direction: column;
+                will-change: transform;
+            }
+            #realtime-widget .rt-rows .rt-row:nth-child(even) {
+                background: #fafbff;
+            }
+            #realtime-widget .rt-status {
+                justify-self: flex-start;
+                padding: 6px 16px;
+                border-radius: 999px;
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: #fff;
+                display: inline-flex;
+                align-items: center;
+                box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+            }
+            #realtime-widget .rt-status--complete {
+                background: linear-gradient(120deg, #f31260, #ff5454);
+            }
+            #realtime-widget .rt-status--progress {
+                background: linear-gradient(120deg, #f97316, #fb923c);
+            }
+            #realtime-widget .rt-status--pending {
+                background: linear-gradient(120deg, #facc15, #f97316);
+            }
+            #realtime-widget .rt-row--highlight {
+                animation: rtFlash 1.5s ease;
+            }
+            @keyframes rtFlash {
+                0% {
+                    box-shadow: inset 0 0 0 999px rgba(253, 230, 138, 0.4);
+                }
+                100% {
+                    box-shadow: inset 0 0 0 0 rgba(253, 230, 138, 0);
+                }
+            }
+            @media (max-width: 480px) {
+                #realtime-widget .rt-row {
+                    grid-template-columns: 0.8fr 1.3fr 1fr;
+                    padding: 12px 16px;
+                    font-size: 0.9rem;
+                }
+                #realtime-widget .rt-card__title {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+        <script>
+            (function () {
+                const rowsEl = document.getElementById("rt-rows");
+                const updatedEl = document.getElementById("rt-updated");
+                if (!rowsEl) return;
+
+                const familyNames = ["홍", "김", "문", "정", "고", "조", "박", "이", "신", "최", "장", "서", "유", "류", "배"];
+                const givenStems = ["민", "서", "윤", "호", "진", "우", "라", "율", "채", "하", "봄", "연", "도", "현"];
+                const statusOptions = [
+                    { label: "신청완료", className: "rt-status--complete" },
+                    { label: "상담중", className: "rt-status--progress" },
+                    { label: "배정중", className: "rt-status--pending" }
+                ];
+
+                const MAX_ROWS = 8;
+                const BUFFER_ROWS = 4;
+
+                function randomItem(list) {
+                    return list[Math.floor(Math.random() * list.length)];
+                }
+
+                function maskName() {
+                    const name = randomItem(familyNames) + randomItem(givenStems);
+                    return name + "**";
+                }
+
+                function maskPhone() {
+                    const digits = Array.from({ length: 4 }, () => Math.floor(Math.random() * 10)).join("");
+                    return `010-${digits.slice(0, 2)}${digits.slice(2, 3)}*-****`;
+                }
+
+                function createRowElement() {
+                    const status = randomItem(statusOptions);
+                    const row = document.createElement("div");
+                    row.className = "rt-row";
+                    row.innerHTML = `
+                        <span>${maskName()}</span>
+                        <span>${maskPhone()}</span>
+                        <span><span class="rt-status ${status.className}">${status.label}</span></span>
+                    `;
+                    return row;
+                }
+
+                function updateTimestamp() {
+                    if (!updatedEl) return;
+                    const now = new Date();
+                    updatedEl.textContent = now.toLocaleTimeString("ko-KR", { hour12: false });
+                }
+
+                function seedRows() {
+                    rowsEl.innerHTML = "";
+                    const fragment = document.createDocumentFragment();
+                    const total = MAX_ROWS + BUFFER_ROWS;
+                    for (let i = 0; i < total; i++) {
+                        fragment.appendChild(createRowElement());
+                    }
+                    rowsEl.appendChild(fragment);
+                }
+
+                function cycleRow() {
+                    const firstRow = rowsEl.firstElementChild;
+                    if (!firstRow) return;
+                    const newRow = createRowElement();
+                    rowsEl.appendChild(newRow);
+
+                    const height = firstRow.offsetHeight;
+                    rowsEl.style.transition = "transform 0.9s ease";
+                    rowsEl.style.transform = `translateY(-${height}px)`;
+
+                    setTimeout(() => {
+                        rowsEl.style.transition = "none";
+                        rowsEl.style.transform = "translateY(0)";
+                        rowsEl.removeChild(firstRow);
+                    }, 950);
+
+                    updateTimestamp();
+                }
+
+                seedRows();
+                updateTimestamp();
+                setInterval(cycleRow, 1400);
+            })();
+        </script>
 
         <div id="tenping-form" class="w-full">
             <tenping class="adsbytenping" style="width:100%; margin:0 auto; display:block;" tenping-ad-type="CInmlFSNPJoo9rBMK%2brlTg%3d%3d" tenping-ad-client="YB5zJhYSsND30S8%2b6AfDDBt6Knx30LS8lfu4SlQnfo8BP3A58iAErJKpG5xjk3jk" tenping-ad-campaign="2024012915390001" tenping-ad-distributionAddID="2025111615080001" tenping-ad-contain_image="false" tenping-ad-contain_logo="false" tenping-ad-contain_Plugin="false" tenping-ad-contain_TpCall="false" tenping-ad-theme="default_button"></tenping>
