@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -316,13 +316,182 @@
                 “아이가 바뀌는지,<br>
                 3일만 직접 확인해보세요.”
             </h2>
-
         </section>
+
+        <iframe frameborder='0' width='100%' height='480' name='ifrm_dbdbdeep' scrolling='no' src='//dbdbdeep.com/new/mct/list/?S00277743GC05919580D' ></iframe>
 
         <div id="tenping-form" class="w-full">
             <tenping class="adsbytenping" style="width:100%; margin:0 auto; display:block;" tenping-ad-type="CInmlFSNPJoo9rBMK%2brlTg%3d%3d" tenping-ad-client="YB5zJhYSsND30S8%2b6AfDDBt6Knx30LS8lfu4SlQnfo8BP3A58iAErJKpG5xjk3jk" tenping-ad-campaign="2024012915390001" tenping-ad-distributionAddID="2025111615080001" tenping-ad-contain_image="false" tenping-ad-contain_logo="false" tenping-ad-contain_Plugin="false" tenping-ad-contain_TpCall="false" tenping-ad-theme="default_button"></tenping>
             <script async src="//ads.tenping.kr/scripts/adsbytenping.min.js"></script>
         </div>
+        <div id="privacy-widget">
+            <div class="pw-inner">
+                <div class="pw-icon-circle" aria-hidden="true">
+                    <span class="pw-ring"></span>
+                    <span class="pw-icon">🔒</span>
+                </div>
+                <div class="pw-text">
+                    <p class="pw-main" id="pw-main-text">전화 한 통, 스팸 걱정 없이 받으세요.</p>
+                    <p class="pw-sub">은행권 수준 암호화와 무단 제공 금지 정책을 따릅니다.</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            #privacy-widget {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto 32px;
+                padding: 0 24px;
+                box-sizing: border-box;
+            }
+            #privacy-widget .pw-inner {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                background: linear-gradient(135deg, #1d2671, #c33764);
+                border-radius: 999px;
+                box-shadow: 0 20px 45px rgba(24, 24, 77, 0.35);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                padding: 16px 24px;
+                position: relative;
+                overflow: hidden;
+                animation: pwFloat 6s ease-in-out infinite;
+            }
+            #privacy-widget .pw-inner::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.3), transparent 55%);
+                opacity: 0.25;
+                mix-blend-mode: screen;
+                animation: pwGlow 4s ease-in-out infinite;
+            }
+            #privacy-widget .pw-icon-circle {
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: radial-gradient(circle, #fffdfa, #ffe1e6);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: pwPulse 2s ease-in-out infinite;
+                box-shadow: 0 10px 25px rgba(241, 245, 249, 0.45), inset 0 4px 12px rgba(248, 113, 113, 0.3);
+                position: relative;
+                overflow: hidden;
+            }
+            #privacy-widget .pw-icon {
+                font-size: 24px;
+                display: inline-block;
+            }
+            #privacy-widget .pw-ring {
+                position: absolute;
+                inset: 1.5px;
+                border-radius: 50%;
+                border: 2px solid rgba(248, 113, 113, 0.5);
+                animation: pwRing 2s ease-out infinite;
+            }
+            #privacy-widget .pw-text {
+                flex: 1;
+                text-align: left;
+            }
+            #privacy-widget .pw-main {
+                font-weight: 700;
+                font-size: 15px;
+                color: #f8fafc;
+                margin: 0;
+                transition: opacity 0.45s ease, transform 0.45s ease;
+            }
+            #privacy-widget .pw-main.pw-fade {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            #privacy-widget .pw-sub {
+                font-size: 13px;
+                color: rgba(248, 250, 252, 0.8);
+                margin: 6px 0 0;
+                line-height: 1.4;
+            }
+            @media (max-width: 420px) {
+                #privacy-widget .pw-inner {
+                    padding: 12px 16px;
+                    gap: 12px;
+                }
+                #privacy-widget .pw-icon-circle {
+                    width: 44px;
+                    height: 44px;
+                }
+                #privacy-widget .pw-main {
+                    font-size: 14px;
+                }
+                #privacy-widget .pw-sub {
+                    font-size: 12px;
+                }
+            }
+            @keyframes pwPulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.15);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+            @keyframes pwRing {
+                0% {
+                    opacity: 0.7;
+                    transform: scale(1);
+                }
+                70% {
+                    opacity: 0;
+                    transform: scale(1.6);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(1.6);
+                }
+            }
+            @keyframes pwFloat {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-4px);
+                }
+            }
+            @keyframes pwGlow {
+                0%,
+                100% {
+                    opacity: 0;
+                }
+                45% {
+                    opacity: 0.6;
+                }
+            }
+        </style>
+        <script>
+            (function () {
+                const messages = [
+                    "전화 한 통, 스팸 걱정 없이 받으세요.",
+                    "입력하신 정보는 상담 외엔 절대 사용하지 않습니다.",
+                    "은행권 수준 암호화로 안전하게 전송됩니다."
+                ];
+                const mainEl = document.getElementById("pw-main-text");
+                let index = 0;
+                setInterval(() => {
+                    mainEl.classList.add("pw-fade");
+                    setTimeout(() => {
+                        index = (index + 1) % messages.length;
+                        mainEl.textContent = messages[index];
+                        mainEl.classList.remove("pw-fade");
+                    }, 400);
+                }, 4000);
+            })();
+        </script>
+
 
     </div> <!-- .max-w-2xl (전체 컨테이너) 끝 -->
 
